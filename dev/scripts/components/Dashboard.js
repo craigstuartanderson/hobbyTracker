@@ -12,9 +12,7 @@ class Dashboard extends React.Component{
     render(){
         return(
             <ul>
-                {this.state.toDos.map((item, i) => {
-                    return <Workblock data={item} key={`item-${i}`} remove={this.removeFromList} toDoIndex={i} />
-                })}
+                {/* map through the array of that is the state of entries and  */}
             </ul>
         )
     }

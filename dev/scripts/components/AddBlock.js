@@ -1,53 +1,36 @@
 import React from 'react';
 
+// this component builds what is in each block
+
 class AddBlock extends React.Component{
     constructor(){
         super();
         this.state = {
-            Log:[
-                    {  
-                        workArea: 'Hull', 
-                        hours: 4
-                    },
-                    {  
-                        workArea: 'Deck',
-                        hours: 2
-                    },
-                
-                ],
-            
-            newEntry: {
-                workArea: '',
-                hours: 0
-
-            }
+            workArea:'',
+            hours: ''
         }
         
         this.handleChange = this.handleChange.bind(this);
-        this.addToList = this.addToList.bind(this);
     }
     handleChange(e){
         this.setState({
-            newLog: e.target.value
+            [e.target.name]: e.target.value
         })
     }
-    addToList(logEntry){
-        const newLog = Array.from(this.state.log)
-
-        newLog.push(logEntry)
-
+    reset(){
         this.setState({
-            log: newLog
+            workArea: '',
+            hours: ''
         })
     }
+ 
     render(){
         return(
-            <form onSubmit={this.addToList}>
-                <input type="text" name="workArea" value={this.state.log.workArea} onChange={this.handleChange} />
-                <input type="text" name="hours" value={this.state.log.hours} onChange={this.handleChange}/>
+            <form onSubmit={() => this.props.add(this.state)}>
+                <input type="text" name="workArea" onChange={this.handleChange} />
+                <input type="text" name="hours" onChange={this.handleChange} />
                 <button>Log Hours</button>
             </form>
-
         )
     }
 }
