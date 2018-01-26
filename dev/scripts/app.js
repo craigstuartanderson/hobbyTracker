@@ -5,24 +5,30 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import WorkBlock from './components/WorkBlock';
 import AddBlock from './components/AddBlock';
+import Totals from './components/Totals';
 
 class App extends React.Component {
     constructor(){
       super();
       this.state = {
 				workArea: '',
-				hours: '',
+        hours: 0,
+        comments: '',
         log: [
 					{
 						workArea: 'hull',
-						hours: '4'
+            hours: 4,
+            comments: ''
 					}
-				],      
+        ], 
+        runningTotal: 0     
 			}
 			
       this.addEntry = this.addEntry.bind(this);
 			this.removeEntry = this.removeEntry.bind(this);
-			this.handleChange = this.handleChange.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.totalHours = this.totalHours.bind(this);
+      this.areaList = this.areaList.bind(this);
 
     }
 		
@@ -32,37 +38,55 @@ class App extends React.Component {
 			})
 		}
 
-    addEntry() {
+    addEntry(e) {
+      e.preventDefault();
+
+      this.totalHours();
 
 			const newEntry = {
 				workArea: this.state.workArea,
-				hours: this.state.hours
-			}
-
+        hours: this.state.hours,
+        comments: this.state.comments
+      }
       const newLog = Array.from(this.state.log)
-
-      newLog.push(newBlock)
+      newLog.push(newEntry);
 
       this.setState({
-        log: newLog
+        workArea: '',
+        hours: 0,
+        comments: '',
+        log: newLog,
       })
     }
 	
-			removeEntry(index){
-	
-				const editedLog = Array.from(this.state.log);
-	
-				editedLog.splice(index, 1);
-	
-				this.setState({
-					log: editedLog
-				})
-		}
+    removeEntry(index){
 
+      const editedLog = Array.from(this.state.log);
 
-      
+      editedLog.splice(index, 1);
+
+      this.setState({
+        log: editedLog
+      })
+    }
+
+    totalHours(){
+        
+      return this.state.log
+          .map((entry) => entry.hours)
+          .reduce((tally, nextItem) => new Number(tally) + new Number(nextItem));
+      }
     
+    areaList(){
     
+      const areaSet = new Set(this.state.log.map((entry) => entry.workArea));
+
+      return Array.from(areaSet);
+
+    
+    }
+
+        
     render() {
       return (
         <div className="appContainer">
@@ -71,12 +95,13 @@ class App extends React.Component {
           </header>
           <main>
             <section className="inuptSection">
-							{/* <AddBlock add={this.addEntry} /> */}
-							<form onSubmit={this.addEntry}>
-								<input type="text" name="workArea" onChange={this.handleChange} />
-								<input type="text" name="hours" onChange={this.handleChange} />
+							<form id="addEntry" onSubmit={this.addEntry}>
+								<input type="text" name="workArea" value={this.state.workArea} onChange={this.handleChange} />
+								<input type="number" name="hours" value={this.state.hours} onChange={this.handleChange} />
+                <textarea name="comments" form="addEntry" value={this.state.comments} onChange={this.handleChange} cols="30" rows="10">Add notes...</textarea>
 								<button>Log Hours</button>
 							</form>
+              <Totals finalHours={this.totalHours()} areaList={this.areaList()} />
             </section>
             <section className="outputSection">
               <ul>

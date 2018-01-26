@@ -7,7 +7,7 @@ class AddBlock extends React.Component{
         super();
         this.state = {
             workArea:'',
-            hours: ''
+            hours: '',
         }
         
         this.handleChange = this.handleChange.bind(this);
