@@ -16,9 +16,9 @@ class App extends React.Component {
         comments: '',
         log: [
 					{
-						workArea: 'hull',
+						workArea: 'Hull',
             hours: 4,
-            comments: ''
+            comments: 'Sanded and painted below waterline.'
 					}
         ], 
         runningTotal: 0     
@@ -90,21 +90,24 @@ class App extends React.Component {
     render() {
       return (
         <div className="appContainer">
-          <header>
-            <Header />
+          <header className="wrapper">
+            <Header finalHours={this.totalHours()}/>
           </header>
-          <main>
-            <section className="inuptSection">
+          <main className="wrapper">
+            <section className="inputSection">
 							<form id="addEntry" onSubmit={this.addEntry}>
+              <label htmlFor="workArea">Section:</label>
 								<input type="text" name="workArea" value={this.state.workArea} onChange={this.handleChange} />
+                <label htmlFor="hours">Hours:</label>
 								<input type="number" name="hours" value={this.state.hours} onChange={this.handleChange} />
+                <label htmlFor="comments">Notes:</label>
                 <textarea name="comments" form="addEntry" value={this.state.comments} onChange={this.handleChange} cols="30" rows="10">Add notes...</textarea>
 								<button>Log Hours</button>
 							</form>
               <Totals finalHours={this.totalHours()} areaList={this.areaList()} />
             </section>
             <section className="outputSection">
-              <ul>
+              <ul className="workBoard">
                 {this.state.log.map((entry, i) => {
                   return(
 										<WorkBlock data={entry} key={`entry-${i}`} index={i} remove={this.removeEntry} />
@@ -113,7 +116,7 @@ class App extends React.Component {
               </ul>
             </section>
           </main>
-          <footer>
+          <footer className="wrapper">
             <Footer />
           </footer>
         </div>

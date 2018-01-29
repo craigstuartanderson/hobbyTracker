@@ -1,0 +1,38 @@
+.inputSection {
+    width: 20%;
+    padding: 10px;
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+    input, textarea, button{
+        margin: 0 0 20px 0;
+        border: 1px solid black;
+        font-size: 1.2rem;
+    }
+    label{
+        margin: 0 0 5px 0;
+        font-size: 2rem;
+    }
+}
+.workAreaList{
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1.4rem;
+        margin: 5px 0;
+        li{
+            border: 1px solid black;
+            padding: 5px;
+            margin: 2px;
+        }
+    }
+    h3{
+        font-size: 2rem;
+    }
+    h4{
+        margin: 0;
+    }
+
+}
+        

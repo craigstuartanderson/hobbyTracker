@@ -12,10 +12,10 @@ class Totals extends React.Component{
     render(){
         return(
             <div className="totalsContainer">
-                <div className="hours">
+                {/* <div className="hours">
                     <h3>Total Project Hours</h3>
                     <h3>{this.props.finalHours}hrs</h3>
-                </div>
+                </div> */}
                 <div className="workAreaList">
                     <h3>Current Work Areas</h3>
                     <ul>

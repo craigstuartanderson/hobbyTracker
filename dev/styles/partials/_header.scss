@@ -1,0 +1,26 @@
+.headerContainer{
+    padding: 20px 0 0 0; 
+    border-bottom: 5px solid black;
+    display: flex;
+    justify-content: space-around;
+        img{
+            width: 10%;
+            // padding-top: 20px;
+        }
+}
+.hoursContainer{
+    h4{
+        border: 1px solid black;
+        margin: 10px 0 0 0;
+        padding: 12px 5px;;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+    h5{
+        font-size: 4rem;
+        text-align: center;
+        margin: 0;
+        color: white;
+        background: black;
+    }
+}
