@@ -96,13 +96,17 @@ class App extends React.Component {
           <main className="wrapper">
             <section className="inputSection">
 							<form id="addEntry" onSubmit={this.addEntry}>
-              <label htmlFor="workArea">Section:</label>
-								<input type="text" name="workArea" value={this.state.workArea} onChange={this.handleChange} />
-                <label htmlFor="hours">Hours:</label>
-								<input type="number" name="hours" value={this.state.hours} onChange={this.handleChange} />
-                <label htmlFor="comments">Notes:</label>
-                <textarea name="comments" form="addEntry" value={this.state.comments} onChange={this.handleChange} cols="30" rows="10">Add notes...</textarea>
-								<button>Log Hours</button>
+                <div className="inputsOne">  
+                  <label htmlFor="workArea">Section:</label>
+                  <input type="text" name="workArea" value={this.state.workArea} onChange={this.handleChange} />
+                  <label htmlFor="hours">Hours:</label>
+                  <input type="number" name="hours" value={this.state.hours} onChange={this.handleChange} />
+                </div>
+                <div className="inputsTwo">  
+                  <label htmlFor="comments">Notes:</label>
+                  <textarea name="comments" form="addEntry" value={this.state.comments} onChange={this.handleChange} cols="30" rows="10">Add notes...</textarea>
+								  <button>Log Hours</button>
+                </div>
 							</form>
               <Totals finalHours={this.totalHours()} areaList={this.areaList()} />
             </section>

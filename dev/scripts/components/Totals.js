@@ -17,7 +17,7 @@ class Totals extends React.Component{
                     <h3>{this.props.finalHours}hrs</h3>
                 </div> */}
                 <div className="workAreaList">
-                    <h3>Current Work Areas</h3>
+                    <h3>Active Work Areas</h3>
                     <ul>
                         {this.props.areaList.map((area, i) => {
                             return (

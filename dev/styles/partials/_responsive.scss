@@ -1,0 +1,57 @@
+@media (max-width: 940px) {
+    h1{
+        font-size: 4.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .workBlockContainer{
+        width: 50%;
+    }
+    main{
+        flex-direction: column;
+    }
+    .inputSection{
+        width: 100%;
+        form{
+        flex-direction: row;
+        justify-content: space-around;
+        }
+    } 
+    .inputsOne, .inputsTwo{
+        display: flex;
+        flex-direction: column;
+        align-items: space-between;
+
+    }
+    .outputSection{
+        width: 100%;
+    }
+}
+@media (max-width: 480px){
+    h1{
+        font-size: 3rem;
+    }
+    h3{
+        font-size: 2rem;
+    }
+    .headerContainer{
+        img{
+            width: 20%;
+        }
+    }
+    .hoursContainer{
+        h4{
+            font-size: 1.6rem;
+            text-align: center;
+        }
+    }
+    .inputSection{
+        form{
+            flex-direction: column;
+        }
+    }
+    .workBlockContainer{
+        width: 100%;
+    }
+}
